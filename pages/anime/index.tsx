@@ -6,6 +6,7 @@ import Layout from 'components/layout'
 import Loader from 'components/loader'
 import AnimeList from 'components/anime/anime_list'
 import AnimePagination from 'components/anime/anime_pagination'
+import SearchModal from 'components/anime/search_modal'
 import { getAnimeSearch } from 'api'
 import { IAnimeItem, IPagination } from 'types'
 
@@ -18,6 +19,7 @@ const Anime = ({ items: _items, pagination: _pagination }: Props) => {
   const [pagination, setPagination] = useState(_pagination)
   const [items, setItems] = useState(_items)
   const [loading, setLoading] = useState(false)
+  const [searchModalVisible, setSearchModalVisible] = useState(false)
 
   const handleChangePage = (page: number) => {
     setLoading(true)
@@ -29,10 +31,19 @@ const Anime = ({ items: _items, pagination: _pagination }: Props) => {
       .finally(() => setLoading(false))
   }
 
+  const handleShowSearchModal = () => {
+    setSearchModalVisible(true)
+  }
+
+  const handleCloseSearchModal = () => {
+    setSearchModalVisible(false)
+  }
+
   return (
     <>
       {loading && <Loader />}
-      <Header />
+      <SearchModal show={searchModalVisible} onClose={handleCloseSearchModal} />
+      <Header onStartSearch={handleShowSearchModal} />
       <Layout>
         <div className="anime-list__wrapper">
           <AnimeList items={items} />

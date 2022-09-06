@@ -20,14 +20,18 @@ const Flex = styled.div`
   gap: 40px;
 `
 
-function Header() {
+type Props = {
+  onStartSearch: () => void
+}
+
+const Header = ({ onStartSearch }: Props) => {
   return (
     <Wrapper>
       <Layout>
         <Flex>
           <Title>Anime</Title>
           <div className="search-input">
-            <SearchInput placeholder="Search..." />
+            <SearchInput placeholder="Search..." onClick={onStartSearch} />
           </div>
           <SecondaryText>Today is the 24th of October</SecondaryText>
         </Flex>

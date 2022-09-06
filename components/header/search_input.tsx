@@ -28,11 +28,12 @@ const SearchIcon = styled.div`
 
 type Props = {
   placeholder: string
+  onClick: () => void
 }
 
-const SearchInput = ({ placeholder }: Props) => (
+const SearchInput = ({ placeholder, onClick }: Props) => (
   <div className="search-input__wrapper">
-    <Input placeholder={placeholder} />
+    <Input placeholder={placeholder} onClick={onClick} />
     <SearchIcon>
       <i className="fa-solid fa-magnifying-glass" />
     </SearchIcon>
