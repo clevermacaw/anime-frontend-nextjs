@@ -21,6 +21,7 @@ export interface IAnimeItem {
 }
 
 export interface IPagination {
+  current_page: number
   last_visible_page: number
   has_next_page: boolean
   items: {

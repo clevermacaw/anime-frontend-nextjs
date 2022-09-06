@@ -37,6 +37,7 @@ const AnimeItem = ({ item }: Props) => (
   <Container>
     <Image
       src="https://cdn.myanimelist.net/images/anime/11/73923l.jpg"
+      // src={item.images.jpg.image_url}
       alt={item.title}
     />
     <Title>{item.title}</Title>
