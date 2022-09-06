@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import _ from 'lodash'
 import SearchResultItem from './search_result_item'
+import PrimaryText from 'components/primary_text'
 import { getAnimeSearch } from 'api'
 import { IAnimeItem } from 'types'
 
@@ -91,11 +92,13 @@ type Props = {
 
 const SearchModal = ({ show, onClose }: Props) => {
   const [query, setQuery] = useState('')
+  const [fetched, setFetched] = useState(false)
   const [animeCandidates, setAnimeCandidates] = useState<IAnimeItem[]>([])
   const debouncedAnimeSearch = useCallback(
     _.debounce((q: string) => {
       getAnimeSearch({ page: 1, limit: 5, query: q }).then((res) => {
         setAnimeCandidates(res.data)
+        setFetched(true)
       })
     }, 1000),
     []
@@ -103,7 +106,10 @@ const SearchModal = ({ show, onClose }: Props) => {
 
   useEffect(() => {
     if (query) debouncedAnimeSearch(query)
-    else setAnimeCandidates([])
+    else {
+      setAnimeCandidates([])
+      setFetched(false)
+    }
   }, [query])
 
   const handleChangeQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -122,11 +128,19 @@ const SearchModal = ({ show, onClose }: Props) => {
             <CloseIcon onClick={onClose}>
               <i className="fa-solid fa-xmark" />
             </CloseIcon>
-            {!!animeCandidates.length && (
+            {fetched && (
               <ResultContainer>
-                {animeCandidates.map((anime) => (
-                  <SearchResultItem anime={anime} />
-                ))}
+                {animeCandidates.length ? (
+                  animeCandidates.map((anime) => (
+                    <SearchResultItem anime={anime} />
+                  ))
+                ) : (
+                  <PrimaryText
+                    styles={{ textAlign: 'center', padding: '50px 0' }}
+                  >
+                    Oops it seems there is nothing for ‘{query}’
+                  </PrimaryText>
+                )}
               </ResultContainer>
             )}
           </InputContainer>
