@@ -1,0 +1,10 @@
+.anime-list__wrapper {
+  padding: 38px 0;
+}
+
+.anime-list__pagination {
+  display: block;
+  margin: auto;
+  width: fit-content;
+  padding-top: 38px;
+}

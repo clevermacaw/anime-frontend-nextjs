@@ -6,7 +6,7 @@ const Layout = styled.div`
   margin-right: auto;
   padding: 0 15px;
 
-  @media screen and (min-width: 900px) {
+  @media screen and (min-width: 768px) {
     width: 742px;
   }
 `
