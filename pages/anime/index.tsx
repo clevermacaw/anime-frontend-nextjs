@@ -6,7 +6,7 @@ import Layout from 'components/layout'
 import Loader from 'components/loader'
 import AnimeList from 'components/anime/anime_list'
 import AnimePagination from 'components/anime/anime_pagination'
-import SearchModal from 'components/anime/search_modal'
+import SearchModal from 'components/search_modal'
 import { getAnimeSearch } from 'api'
 import { IAnimeItem, IPagination } from 'types'
 

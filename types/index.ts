@@ -10,11 +10,13 @@ export interface IAnimeItem {
     jpg: IImage
     webp: IImage
   }
+  episodes: number
   popularity: number
   rank: number
   score: number
   scored_by: number
   title: string
+  type: string
   source: string
   status: string
   synopsis: string

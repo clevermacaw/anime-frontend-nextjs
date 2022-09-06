@@ -6,6 +6,7 @@ const PrimaryText = styled.h1`
   font-weight: 500;
   line-height: 19px;
   color: var(--color-black);
+  margin: 0;
 `
 
 type Props = {
