@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import styled from 'styled-components'
+import ActionButton from 'components/action_button'
 import PrimaryText from 'components/primary_text'
 
 type Props = {
@@ -8,15 +9,6 @@ type Props = {
   perPage: number
   onChange: (newPage: number) => void
 }
-
-const ActionButton = styled.button`
-  background: #ebebeb;
-  border-radius: 5px;
-  padding: 6px 8px;
-  border: none;
-  width: 32px;
-  height: 32px;
-`
 
 const Container = styled.div`
   display: flex;

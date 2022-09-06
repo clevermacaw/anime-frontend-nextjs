@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { GetServerSideProps } from 'next'
 import Header from 'components/header'
+import Footer from 'components/footer'
 import Layout from 'components/layout'
 import Loader from 'components/loader'
 import AnimeList from 'components/anime/anime_list'
@@ -45,6 +46,7 @@ const Anime = ({ items: _items, pagination: _pagination }: Props) => {
           </div>
         </div>
       </Layout>
+      <Footer />
     </>
   )
 }
