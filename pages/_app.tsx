@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import Loader from 'components/loader'
+import Loading from 'components/loading'
 import '@fortawesome/fontawesome-free/css/brands.css'
 import '@fortawesome/fontawesome-free/css/solid.css'
 import '@fortawesome/fontawesome-free/css/regular.css'
@@ -12,6 +13,7 @@ import type { AppProps } from 'next/app'
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Suspense fallback={<Loader />}>
+      <Loading />
       <Component {...pageProps} />
     </Suspense>
   )
