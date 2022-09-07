@@ -14,6 +14,8 @@ type Props = {
   children: ReactNode
 }
 
-export default ({ styles = {}, children }: Props) => (
+const PrimaryTextWrapper = ({ styles = {}, children }: Props) => (
   <PrimaryText style={styles}>{children}</PrimaryText>
 )
+
+export default PrimaryTextWrapper

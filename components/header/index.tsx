@@ -17,7 +17,11 @@ const Flex = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 40px;
+  gap: 14px;
+
+  @media screen and (min-width: 768px) {
+    gap: 40px;
+  }
 `
 
 type Props = {
@@ -33,7 +37,7 @@ const Header = ({ onStartSearch }: Props) => {
           <div className="search-input">
             <SearchInput placeholder="Search..." onClick={onStartSearch} />
           </div>
-          <SecondaryText>Today is the 24th of October</SecondaryText>
+          <SecondaryText>Today is the 8th of September</SecondaryText>
         </Flex>
       </Layout>
     </Wrapper>

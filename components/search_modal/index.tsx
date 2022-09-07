@@ -110,7 +110,7 @@ const SearchModal = ({ show, onClose }: Props) => {
       setAnimeCandidates([])
       setFetched(false)
     }
-  }, [query])
+  }, [query, debouncedAnimeSearch])
 
   const handleChangeQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value)

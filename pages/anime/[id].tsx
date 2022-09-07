@@ -1,5 +1,6 @@
 import { GetServerSideProps } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import styled from 'styled-components'
 import Layout from 'components/layout'
 import PrimaryText from 'components/primary_text'
@@ -50,16 +51,6 @@ const Main = styled.div`
   }
 `
 
-const Thumbnail = styled.img`
-  width: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-
-  @media screen and (min-width: 768px) {
-    height: 335px;
-  }
-`
-
 const Information = styled.div`
   display: flex;
   flex-direction: column;
@@ -105,7 +96,18 @@ const Details = ({ item }: Props) => {
           </Link>
         </PrimaryText>
         <Main>
-          <Thumbnail src={item.images?.jpg?.large_image_url} alt={item.title} />
+          <Image
+            src={item.images?.jpg?.large_image_url}
+            placeholder="blur"
+            blurDataURL={item.images?.jpg?.small_image_url}
+            alt={item.title}
+            layout="responsive"
+            width={300}
+            height={335}
+            style={{
+              borderRadius: '10px',
+            }}
+          />
           <Information>
             <TitleSection>
               <Title>{item.title}</Title>

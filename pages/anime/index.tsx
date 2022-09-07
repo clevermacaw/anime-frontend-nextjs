@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { GetServerSideProps } from 'next'
+import Router from 'next/router'
 import Header from 'components/header'
 import Footer from 'components/footer'
 import Layout from 'components/layout'
@@ -23,11 +24,13 @@ const Anime = ({ items: _items, pagination: _pagination }: Props) => {
 
   const handleChangePage = (page: number) => {
     setLoading(true)
+    Router.push({
+      query: { page },
+    })
     getAnimeSearch({ page, limit: 9 })
       .then((res) => {
         setPagination(res.pagination)
         setItems(res.data)
-        localStorage.setItem('anime', JSON.stringify(res.data))
       })
       .finally(() => setLoading(false))
   }
@@ -63,8 +66,9 @@ const Anime = ({ items: _items, pagination: _pagination }: Props) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const search = await getAnimeSearch({ page: 1, limit: 9 })
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const page = parseInt(context.query.page as string) || 1
+  const search = await getAnimeSearch({ page, limit: 9 })
 
   return {
     props: {

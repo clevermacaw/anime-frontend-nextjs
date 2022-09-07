@@ -14,6 +14,8 @@ type Props = {
   children: ReactNode
 }
 
-export default ({ styles = {}, children }: Props) => (
+const SecondaryTextWrapper = ({ styles = {}, children }: Props) => (
   <SecondaryText style={styles}>{children}</SecondaryText>
 )
+
+export default SecondaryTextWrapper

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import styled from 'styled-components'
 import { IAnimeItem } from 'types'
 
@@ -18,17 +19,6 @@ const Container = styled.div`
   }
 `
 
-const Image = styled.img`
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-`
-
 const Title = styled.h6`
   position: absolute;
   left: 12px;
@@ -44,9 +34,20 @@ const AnimeItem = ({ item }: Props) => (
   <Container>
     <Link href={`/anime/${item.mal_id}`}>
       <Image
-        src="https://cdn.myanimelist.net/images/anime/11/73923l.jpg"
-        // src={item.images.jpg.image_url}
+        src={item.images.jpg.image_url}
         alt={item.title}
+        layout="fill"
+        placeholder="blur"
+        blurDataURL={item.images.jpg.small_image_url}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          borderRadius: '10px',
+        }}
       />
     </Link>
     <Title>{item.title}</Title>
