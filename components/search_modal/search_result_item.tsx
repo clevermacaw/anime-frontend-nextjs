@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styled from 'styled-components'
 import PrimaryText from 'components/primary_text'
 import SecondaryText from 'components/secondary_text'
@@ -38,18 +39,20 @@ const Icon = styled.div`
 `
 
 const SearchResultItem = ({ anime }: Props) => (
-  <Container>
-    <Thumbnail src={anime.images.jpg.small_image_url} />
-    <TextWrapper>
-      <PrimaryText>{anime.title}</PrimaryText>
-      <SecondaryText>
-        {anime.type} · {anime.episodes} Episode · {capitalize(anime.status)}
-      </SecondaryText>
-    </TextWrapper>
-    <Icon>
-      <i className="fa-solid fa-chevron-right" />
-    </Icon>
-  </Container>
+  <Link href={`/anime/${anime.mal_id}`}>
+    <Container>
+      <Thumbnail src={anime.images.jpg.small_image_url} />
+      <TextWrapper>
+        <PrimaryText>{anime.title}</PrimaryText>
+        <SecondaryText>
+          {anime.type} · {anime.episodes} Episode · {capitalize(anime.status)}
+        </SecondaryText>
+      </TextWrapper>
+      <Icon>
+        <i className="fa-solid fa-angle-right" />
+      </Icon>
+    </Container>
+  </Link>
 )
 
 export default SearchResultItem

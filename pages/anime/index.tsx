@@ -27,6 +27,7 @@ const Anime = ({ items: _items, pagination: _pagination }: Props) => {
       .then((res) => {
         setPagination(res.pagination)
         setItems(res.data)
+        localStorage.setItem('anime', JSON.stringify(res.data))
       })
       .finally(() => setLoading(false))
   }

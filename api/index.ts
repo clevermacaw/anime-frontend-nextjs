@@ -9,6 +9,7 @@ const filter = (item: Record<string, any>) =>
   _.pick(item, [
     'mal_id',
     'images',
+    'approved',
     'episodes',
     'popularity',
     'rank',
@@ -28,7 +29,7 @@ export const getAnimeSearch = ({
 }: {
   page: number
   limit: number
-  query: string
+  query?: string
 }) =>
   axiosInstance
     .get('/anime', { params: { page, limit, q: query, sort: 'desc' } })
@@ -38,3 +39,6 @@ export const getAnimeSearch = ({
         pagination: res.data.pagination,
       }
     })
+
+export const getAnimeById = ({ id }: { id: number }) =>
+  axiosInstance.get(`/anime/${id}`).then((res) => filter(res.data.data))

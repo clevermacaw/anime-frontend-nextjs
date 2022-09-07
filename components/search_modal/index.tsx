@@ -100,7 +100,7 @@ const SearchModal = ({ show, onClose }: Props) => {
         setAnimeCandidates(res.data)
         setFetched(true)
       })
-    }, 1000),
+    }, 300),
     []
   )
 
@@ -132,7 +132,7 @@ const SearchModal = ({ show, onClose }: Props) => {
               <ResultContainer>
                 {animeCandidates.length ? (
                   animeCandidates.map((anime) => (
-                    <SearchResultItem anime={anime} />
+                    <SearchResultItem key={anime.mal_id} anime={anime} />
                   ))
                 ) : (
                   <PrimaryText

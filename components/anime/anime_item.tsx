@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styled from 'styled-components'
 import { IAnimeItem } from 'types'
 
@@ -9,6 +10,12 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   padding-top: 140%;
+  border-radius: 10px;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    cursor: pointer;
+  }
 `
 
 const Image = styled.img`
@@ -35,11 +42,13 @@ const Title = styled.h6`
 
 const AnimeItem = ({ item }: Props) => (
   <Container>
-    <Image
-      src="https://cdn.myanimelist.net/images/anime/11/73923l.jpg"
-      // src={item.images.jpg.image_url}
-      alt={item.title}
-    />
+    <Link href={`/anime/${item.mal_id}`}>
+      <Image
+        src="https://cdn.myanimelist.net/images/anime/11/73923l.jpg"
+        // src={item.images.jpg.image_url}
+        alt={item.title}
+      />
+    </Link>
     <Title>{item.title}</Title>
   </Container>
 )

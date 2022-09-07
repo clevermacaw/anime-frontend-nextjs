@@ -10,6 +10,7 @@ export interface IAnimeItem {
     jpg: IImage
     webp: IImage
   }
+  approved: boolean
   episodes: number
   popularity: number
   rank: number

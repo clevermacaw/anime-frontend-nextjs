@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import styled from 'styled-components'
 
 const SecondaryText = styled.h1`
@@ -8,4 +9,11 @@ const SecondaryText = styled.h1`
   margin: 0;
 `
 
-export default SecondaryText
+type Props = {
+  styles?: Record<string, any>
+  children: ReactNode
+}
+
+export default ({ styles = {}, children }: Props) => (
+  <SecondaryText style={styles}>{children}</SecondaryText>
+)
