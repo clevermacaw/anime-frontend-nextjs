@@ -38,12 +38,12 @@ const Loading = () => {
     }
   })
 
-  return (
-    loading && (
-      <Overlay>
-        <PuffLoader size={100} color="white" />
-      </Overlay>
-    )
+  return loading ? (
+    <Overlay>
+      <PuffLoader size={100} color="white" />
+    </Overlay>
+  ) : (
+    <></>
   )
 }
 
