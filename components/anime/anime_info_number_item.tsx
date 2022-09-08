@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import Title from '../title'
-import SecondaryText from 'components/secondary_text'
 import { separator } from 'utils'
 
 type Props = {
