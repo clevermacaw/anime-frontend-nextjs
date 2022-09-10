@@ -1,0 +1,7 @@
+.search-input {
+  flex-grow: 1;
+}
+
+.search-input__wrapper {
+  position: relative;
+}
