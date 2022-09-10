@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import SecondaryText from '../secondary_text'
 import SearchInput from './search_input'
-import Title from '../title'
+import Title from 'components/Title'
 import Layout from '../layout'
 
 const Wrapper = styled.div`
